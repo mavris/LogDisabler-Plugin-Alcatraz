@@ -10,7 +10,7 @@
 
 @implementation LogController
 {
-
+    
     NSString *projectPath;
 }
 +(LogController *) sharedInstance
@@ -27,10 +27,10 @@
 - (id)init {
     self = [super init];
     if(self != nil) {
-   
+        
         //Getting the project directory
         NSString* filePath = [[self currentWorkspaceDocument].workspace.representingFilePath.fileURL path];
-       projectPath = [filePath stringByDeletingLastPathComponent];
+        projectPath = [filePath stringByDeletingLastPathComponent];
     }
     return self;
 }
@@ -48,35 +48,35 @@
 }
 
 -(void)disableLogs{
-
+    
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
-    task.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.m",@"-exec", @"sed", @"-i", @"", @"s!//LDLog(!//LDLog(!", @"{}", @"+" ];
+    task.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.m",@"-exec", @"sed", @"-i", @"", @"s!NSLog(!//LDLog(!", @"{}", @"+" ];
     [task launch];
     [task waitUntilExit];
-
+    
     NSTask *task2 = [[NSTask alloc] init];
     task2.launchPath = @"/usr/bin/find";
     task2.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.swift",@"-exec", @"sed", @"-i", @"", @"s!print(!//DLrint(!", @"{}", @"+" ];
     [task2 launch];
     [task2 waitUntilExit];
-
+    
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"You have successfully disabled all comments"];
     [alert runModal];
-
+    
 }
 
 -(void)enableLogs{
-
+    
     
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
-    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!//LDLog(!//LDLog(!", @"{}", @"+" ];
+    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!//LDLog(!NSLog(!", @"{}", @"+" ];
     [task launch];
     [task waitUntilExit];
- 
+    
     NSTask *task2 = [[NSTask alloc] init];
     task2.launchPath = @"/usr/bin/find";
     task2.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.swift", @"-exec", @"sed", @"-i", @"", @"s!//DLrint(!print(!", @"{}", @"+" ];
