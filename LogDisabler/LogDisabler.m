@@ -7,6 +7,8 @@
 //
 
 #import "LogDisabler.h"
+#import <Foundation/Foundation.h>
+#import "LogController.h"
 
 @interface LogDisabler()
 
@@ -38,26 +40,74 @@
     //removeObserver
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     
-    // Create menu items, initialize UI, etc.
-    // Sample Menu Item:
-    NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
-    if (menuItem) {
-        [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@""];
-        //[actionMenuItem setKeyEquivalentModifierMask:NSAlphaShiftKeyMask | NSControlKeyMask];
-        [actionMenuItem setTarget:self];
-        [[menuItem submenu] addItem:actionMenuItem];
+    //Adding the menu buttons
+    [self addMenuButtons];
+    
+}
+
+- (void)addMenuButtons {
+   
+    // insert a menuItem to MainMenu "Edit"
+    NSMenuItem* menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+    if (!menuItem) {
+        return;
     }
+    
+    //Adding a seperator
+    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    
+    //Adding a Snippet Group
+    NSMenu* submenu = [[NSMenu alloc] init];
+    
+    NSMenuItem* mainItem = [[NSMenuItem alloc] init];
+    [mainItem setTitle:@"Manage Logs"];
+    
+    [mainItem setSubmenu:submenu];
+    [[menuItem submenu] addItem:mainItem];
+    
+    
+    NSMenuItem* actionMenuItem;
+    
+    //Creating Enable Logs button with selector
+    actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Enable Logs"
+                                                action:@selector(enableLogs)
+                                         keyEquivalent:@"e"];
+    
+    [actionMenuItem setKeyEquivalentModifierMask:NSControlKeyMask | NSShiftKeyMask];
+    [actionMenuItem setTarget:self];
+
+    //Adding the button in menu
+    [submenu addItem:actionMenuItem];
+    
+    
+   //Creating Disable Logs button with selector
+    actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Disable Logs"
+                                                action:@selector(disableLogs)
+                                         keyEquivalent:@"d"];
+    
+    [actionMenuItem setKeyEquivalentModifierMask:NSControlKeyMask | NSShiftKeyMask];
+    [actionMenuItem setTarget:self];
+    
+    //Adding the button in menu
+    [submenu addItem:actionMenuItem];
+    
 }
 
-// Sample Action, for menu item:
-- (void)doMenuAction
+- (void)enableLogs
 {
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Hello, World"];
-    [alert runModal];
+
+    //Executing the task in terminal
+    [[LogController sharedInstance]enableLogs];
+    
 }
 
+- (void)disableLogs
+{
+    
+    //Executing the task in terminal
+    [[LogController sharedInstance] disableLogs];
+    
+}
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

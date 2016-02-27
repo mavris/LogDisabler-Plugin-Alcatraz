@@ -12,6 +12,7 @@
 		2709B1A41C80C4A000EAAEBC /* LogDisabler.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 2709B1A31C80C4A000EAAEBC /* LogDisabler.xcscheme */; };
 		2709B1A71C80C4A000EAAEBC /* LogDisabler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B1A61C80C4A000EAAEBC /* LogDisabler.m */; };
 		2709B1AA1C80C4A000EAAEBC /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2709B1A91C80C4A000EAAEBC /* NSObject_Extension.m */; };
+		274BFD961C80F50900C4E961 /* LogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274BFD951C80F50900C4E961 /* LogController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		2709B1A81C80C4A000EAAEBC /* NSObject_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
 		2709B1A91C80C4A000EAAEBC /* NSObject_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
 		2709B1AB1C80C4A000EAAEBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		274BFD941C80F50900C4E961 /* LogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogController.h; sourceTree = "<group>"; };
+		274BFD951C80F50900C4E961 /* LogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		2709B1A11C80C4A000EAAEBC /* LogDisabler */ = {
 			isa = PBXGroup;
 			children = (
+				274BFD941C80F50900C4E961 /* LogController.h */,
+				274BFD951C80F50900C4E961 /* LogController.m */,
 				2709B1A51C80C4A000EAAEBC /* LogDisabler.h */,
 				2709B1A61C80C4A000EAAEBC /* LogDisabler.m */,
 				2709B1A81C80C4A000EAAEBC /* NSObject_Extension.h */,
@@ -153,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				274BFD961C80F50900C4E961 /* LogController.m in Sources */,
 				2709B1A71C80C4A000EAAEBC /* LogDisabler.m in Sources */,
 				2709B1AA1C80C4A000EAAEBC /* NSObject_Extension.m in Sources */,
 			);
@@ -283,6 +289,7 @@
 				2709B1B01C80C4A000EAAEBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

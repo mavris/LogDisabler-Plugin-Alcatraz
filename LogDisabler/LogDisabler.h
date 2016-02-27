@@ -19,3 +19,6 @@ static LogDisabler *sharedPlugin;
 
 @property (nonatomic, strong, readonly) NSBundle* bundle;
 @end
+
+
+
