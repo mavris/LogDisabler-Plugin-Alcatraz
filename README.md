@@ -25,7 +25,8 @@ Before uploading to the App Store that messages to the console have to be disabl
 - Please make sure that you saved your project before executing a command because Xcode will ask you if you want to revert or keep the original file since it's changed from other app and not Xcode.
 
 ###Unistall
-Delete the LogDisabler.xcplugin in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`
+- Delete the LogDisabler.xcplugin in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`
+- Unistall from Alcatraz
 
 ###How it works
 LogDisabler is searching throughout the project directory (only files with .m and .swift extensions) and is replacing all `NSLog(` or `print(` strings with comments and a flag string which will be used later to enable the log messages.
