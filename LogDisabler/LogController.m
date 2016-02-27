@@ -51,7 +51,7 @@
 
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
-    task.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.m",@"-exec", @"sed", @"-i", @"", @"s!NSLog(!//LDLog(!", @"{}", @"+" ];
+    task.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.m",@"-exec", @"sed", @"-i", @"", @"s!//LDLog(!//LDLog(!", @"{}", @"+" ];
     [task launch];
     [task waitUntilExit];
 
@@ -73,7 +73,7 @@
     
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
-    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!//LDLog(!NSLog(!", @"{}", @"+" ];
+    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!//LDLog(!//LDLog(!", @"{}", @"+" ];
     [task launch];
     [task waitUntilExit];
  
