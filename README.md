@@ -6,6 +6,9 @@ LogDisabler is an Xcode's plug in that enables and disables all your console mes
 If you are like me, then you use NSLog to print messages in console in order to check or debug your app.
 Before uploading to the App Store that messages to the console have to be disabled because they might expose critical data (API urls, tokens, user's data).
 
+### Screenshot
+![image](screenshot1.png)
+
 ###Features
 + Supports Objective-C
 + Supports Swift
@@ -22,7 +25,8 @@ Before uploading to the App Store that messages to the console have to be disabl
 - Please make sure that you saved your project before executing a command because Xcode will ask you if you want to revert or keep the original file since it's changed from other app and not Xcode.
 
 ###Unistall
-Delete the LogDisabler.xcplugin in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`
+- Delete the LogDisabler.xcplugin in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`
+- Unistall from Alcatraz
 
 ###How it works
 LogDisabler is searching throughout the project directory (only files with .m and .swift extensions) and is replacing all `NSLog(` or `print(` strings with comments and a flag string which will be used later to enable the log messages.
