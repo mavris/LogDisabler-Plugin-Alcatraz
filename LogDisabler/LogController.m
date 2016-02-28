@@ -28,9 +28,6 @@
     self = [super init];
     if(self != nil) {
         
-        //Getting the project directory
-        NSString* filePath = [[self currentWorkspaceDocument].workspace.representingFilePath.fileURL path];
-        projectPath = [filePath stringByDeletingLastPathComponent];
     }
     return self;
 }
@@ -48,6 +45,14 @@
 }
 
 -(void)disableLogs{
+    
+    //Getting the project directory
+    NSString* filePath = [[self currentWorkspaceDocument].workspace.representingFilePath.fileURL path];
+    projectPath = [filePath stringByDeletingLastPathComponent];
+    
+    if (projectPath==nil) {
+        return;
+    }
     
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
@@ -70,10 +75,17 @@
 
 -(void)enableLogs{
     
+    //Getting the project directory
+    NSString* filePath = [[self currentWorkspaceDocument].workspace.representingFilePath.fileURL path];
+    projectPath = [filePath stringByDeletingLastPathComponent];
+    
+    if (projectPath==nil) {
+        return;
+    }
     
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = @"/usr/bin/find";
-    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!//LDLog(!NSLog(!", @"{}", @"+" ];
+    task.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.m", @"-exec", @"sed", @"-i", @"", @"s!NSLog(!//LDLog(!", @"{}", @"+" ];
     [task launch];
     [task waitUntilExit];
     
