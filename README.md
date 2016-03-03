@@ -43,6 +43,9 @@ LogDisabler is using UNIX's utility `sed`.
 ###USE IT AT YOUR OWN RISK
 Since LogDisabler is messing with your project files it could some how break something. I am using it for my projects and it works fine but please make sure that you perfomed a commit before executing.
 
+###Alternatives
+You can solve the same problem using Preprocessor with this [approach](http://stackoverflow.com/questions/16002001/how-to-disable-nslog-all-over-the-app).
+I really don't like using the Preprocessor for these kind of issues. See why [here](http://qualitycoding.org/preprocessor/)!
 ###Authors
 * Michael Mavris
 
