@@ -62,9 +62,15 @@
     
     NSTask *task2 = [[NSTask alloc] init];
     task2.launchPath = @"/usr/bin/find";
-    task2.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.swift",@"-exec", @"sed", @"-i", @"", @"s!print(!//DLrint(!", @"{}", @"+" ];
+    task2.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.swift",@"-exec", @"sed", @"-i", @"", @"s!Swift\\.print(!//DLSwift\\.pDLrint(!", @"{}", @"+" ];
     [task2 launch];
     [task2 waitUntilExit];
+
+    NSTask *task3 = [[NSTask alloc] init];
+    task3.launchPath = @"/usr/bin/find";
+    task3.arguments = @[ projectPath, @"-not" ,@"-path" ,@"*/\\.*",@"-type", @"f", @"-name", @"*.swift",@"-exec", @"sed", @"-i", @"", @"s!print(!//DLrint(!", @"{}", @"+" ];
+    [task3 launch];
+    [task3 waitUntilExit];
     
     
     NSAlert *alert = [[NSAlert alloc] init];
@@ -91,9 +97,16 @@
     
     NSTask *task2 = [[NSTask alloc] init];
     task2.launchPath = @"/usr/bin/find";
-    task2.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.swift", @"-exec", @"sed", @"-i", @"", @"s!//DLrint(!print(!", @"{}", @"+" ];
+    task2.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.swift", @"-exec", @"sed", @"-i", @"", @"s!//DLSwift.pDLrint(!Swift.print(!", @"{}", @"+" ];
     [task2 launch];
     [task2 waitUntilExit];
+    
+    
+    NSTask *task3 = [[NSTask alloc] init];
+    task3.launchPath = @"/usr/bin/find";
+    task3.arguments = @[ projectPath,@"-not" ,@"-path" ,@"*/\\.*", @"-type", @"f", @"-name", @"*.swift", @"-exec", @"sed", @"-i", @"", @"s!//DLrint(!print(!", @"{}", @"+" ];
+    [task3 launch];
+    [task3 waitUntilExit];
     
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"You have successfully enabled all comments"];
