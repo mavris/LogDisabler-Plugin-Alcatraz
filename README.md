@@ -9,47 +9,47 @@ Before uploading to the App Store that messages to the console have to be disabl
 ### Screenshot
 ![image](screenshot1.png)
 
-###Features
+### Features
 + Supports Objective-C
 + Supports Swift
 + Enable all log messages
 + Disable all log messages
 
-###Installation
+### Installation
 - Through [Alcatraz](https://github.com/alcatraz/Alcatraz)
 - Download, build the project and restart Xcode
 
-###How to use it
+### How to use it
 - Go to Edit-> Manage Logs and choose "Enable Logs" or "Disable Logs"
 - Using shortcuts CTRL+SHIFT+E to enable logs or CTRL+SHIFT+D to disable logs
 - Please make sure that you saved your project before executing a command because Xcode will ask you if you want to revert or keep the original file since it's changed from other app and not Xcode.
 
-###Unistall
+### Unistall
 - Delete the LogDisabler.xcplugin in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`
 - Unistall from Alcatraz
 - Run this command in your terminal `rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/LogDisabler.xcplugin`
 
-###How it works
+### How it works
 LogDisabler is searching throughout the project directory (only files with .m and .swift extensions) and is replacing all `NSLog(` or `print(` strings with comments and a flag string which will be used later to enable the log messages.
 Any hidden subdirectory and .git are excluded.
 
-###Known issues
+### Known issues
 - LogDisabler will replace any `NSLog(` and `print(` strings. So if you have any `NSString` with substring `NSLog(` or `print(` it will be replaced.
 - If your `NSLog` or `print` is more than one line (with return character between) then the LogDisabler will comment out only the first line and not the others. Or if you have other code in the same line after `NSLog` or `print` it will affected.
 
-###Technical Stuff
+### Technical Stuff
 LogDisabler is using UNIX's utility `sed`.
 
-###USE IT AT YOUR OWN RISK
+### USE IT AT YOUR OWN RISK
 Since LogDisabler is messing with your project files it could some how break something. I am using it for my projects and it works fine but please make sure that you perfomed a commit before executing.
 
-###Alternatives
+### Alternatives
 You can solve the same problem using Preprocessor with this [approach](http://stackoverflow.com/questions/16002001/how-to-disable-nslog-all-over-the-app).
 I really don't like using the Preprocessor for these kind of issues. See why [here](http://qualitycoding.org/preprocessor/)!
-###Authors
+### Authors
 * Michael Mavris
 
-###License
+### License
 
 Copyright Miksoft 2016
 
